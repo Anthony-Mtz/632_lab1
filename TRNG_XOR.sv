@@ -61,7 +61,7 @@ module TRNG
 endmodule: TRNG
 
 
-module TOP(
+module TOP_OLD(
   input  logic [3:0] KEY,
   input  logic CLOCK_50,
   output logic [9:0] LEDR,
@@ -219,4 +219,109 @@ module TOP(
     end
   end
 
+endmodule: TOP_OLD
+
+
+module MEMORY
+  #(parameter WORD_WIDTH = 32) 
+  ( 
+    input  logic clock,
+    input  logic write_en,
+    input  logic read_en,
+    input  logic [$clog2(WORD_WIDTH)-1:0] write_addr,
+    input  logic [$clog2(WORD_WIDTH)-1:0] read_addr,
+    input  logic [WORD_WIDTH-1:0] din,
+    output logic [WORD_WIDTH-1:0] dout
+  );
+
+
+
+
+endmodule: MEMORY
+
+
+module TOP(
+  input  logic [3:0] KEY,
+  input  logic CLOCK_50,
+  output logic [35:0] GPIO_0
+);
+
+  parameter WORD_WIDTH = 8;
+  parameter COUNT = 1000000;
+
+  logic [$clog2(COUNT):0] count;
+  logic [WORD_WIDTH-1:0] word_OUT;
+
+  logic write_en, read_en;
+  logic [WORD_WIDTH-1:0] mem_out;
+  logic [$clog2(WORD_WIDTH)-1:0] write_addr, read_addr;
+
+  logic sample_clock;
+
+  clock_divider #(.SIZE(4)) sampler(.clk_50m(CLOCK_50), .divided_clock(sample_clock));
+
+  TRNG #(.SIZE(WORD_WIDTH)) DUT(.clock(sample_clock), .word_OUT(word_OUT));
+
+  MEMORY #(.WORD_WIDTH(WORD_WIDTH)) memory(.clock(sample_clock), .write_en(write_en), .read_en(read_en),
+                                           .write_addr(write_addr), .read_addr(read_addr),
+                                           .din(word_OUT), .dout(mem_out));
+
+  
+
+
+
+
+
+  logic generate_and_send;
+  enum logic {PRESSED, RELEASED} state_button, nextState_button;
+
+  always_comb begin
+    nextState_button = RELEASED;
+    generate_sequence = 1'b0;
+    
+    case(state_button)
+      PRESSED: begin
+        nextState_button = (~KEY[0]) ? PRESSED : RELEASED;
+        generate_and_send = 1'b0;
+      end
+
+      RELEASED: begin
+        nextState_button = (~KEY[0]) ? PRESSED : RELEASED;
+        generate_and_send = ~KEY[0];
+      end
+    endcase
+
+  end
+
+  always_ff @(posedge CLOCK_50) begin
+    if(~KEY[3]) begin
+      state_button <= RELEASED;
+    end
+    else begin
+
+      state_button <= nextState_button;
+    end
+end
+
 endmodule: TOP
+
+
+module clock_divider
+        #(parameter DIVIDE = 32)
+        (input logic clk_50m,
+		     output logic divided_clock);
+
+parameter CLK_ACC_MAX = 50000000 / DIVIDE;
+parameter CLK_ACC_WIDTH = $clog2(clk_acc_MAX);
+reg [CLK_ACC_WIDTH - 1:0] clk_acc = 0;
+
+assign divided_clock = (clk_acc == 9'd0);
+
+always @(posedge clk_50m) begin
+	if (clk_acc == clk_acc_MAX[CLK_ACC_WIDTH - 1:0])
+		clk_acc <= 0;
+	else
+		clk_acc <= clk_acc + 9'b1;
+end
+
+endmodule
