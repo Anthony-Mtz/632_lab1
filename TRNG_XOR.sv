@@ -223,17 +223,29 @@ endmodule: TOP_OLD
 
 
 module MEMORY
-  #(parameter WORD_WIDTH = 32) 
+  #(parameter MEMORY_SIZE = 4096,
+    parameter WORD_WIDTH = 32) 
   ( 
-    input  logic clock,
+    input  logic clock, reset_n,
     input  logic write_en,
     input  logic read_en,
-    input  logic [$clog2(WORD_WIDTH)-1:0] write_addr,
-    input  logic [$clog2(WORD_WIDTH)-1:0] read_addr,
+    input  logic [$clog2(MEMORY_SIZE)-1:0] write_addr,
+    input  logic [$clog2(MEMORY_SIZE)-1:0] read_addr,
     input  logic [WORD_WIDTH-1:0] din,
     output logic [WORD_WIDTH-1:0] dout
   );
 
+  logic [MEMORY_SIZE-1:0][WORD_WIDTH-1:0] memory;
+  logic [WORD_WIDTH-1:0] temp_data;
+
+  always_ff @(posedge clock, negedge reset_n) begin
+    if(~reset_n) begin
+      // reset memory
+    end
+    else if (write_en) memory[write_addr] <= din;
+  end
+
+  assign dout = read_en ? memory[read_addr] : 'd0;
 
 
 
@@ -248,6 +260,7 @@ module TOP(
 
   parameter WORD_WIDTH = 8;
   parameter COUNT = 1000000;
+  parameter MAX_ADDR = COUNT / WORD_WIDTH;
 
   logic [$clog2(COUNT):0] count;
   logic [WORD_WIDTH-1:0] word_OUT;
@@ -258,13 +271,28 @@ module TOP(
 
   logic sample_clock;
 
-  clock_divider #(.SIZE(4)) sampler(.clk_50m(CLOCK_50), .divided_clock(sample_clock));
+  clock_divider #(.DIVIDE(4)) sampler(.clk_50m(CLOCK_50), .divided_clock(sample_clock));
 
   TRNG #(.SIZE(WORD_WIDTH)) DUT(.clock(sample_clock), .word_OUT(word_OUT));
 
-  MEMORY #(.WORD_WIDTH(WORD_WIDTH)) memory(.clock(sample_clock), .write_en(write_en), .read_en(read_en),
+  MEMORY #(.WORD_WIDTH(WORD_WIDTH)) memory(.clock(CLOCK_50), .write_en(write_en), .read_en(read_en),
                                            .write_addr(write_addr), .read_addr(read_addr),
                                            .din(word_OUT), .dout(mem_out));
+
+  // logic send, tx_busy;
+  // logic [7:0] din;
+
+  // assign din = (word_OUT[BITS-1-pointer]) ? 8'h31 : 8'h30;
+
+  // uart transmit(.din, .wr_en(send), .clk_50m(CLOCK_50), .tx(GPIO_0[25]), .tx_busy);
+
+
+
+
+  logic incr_count, reset_count;
+  logic incr_write_addr, reset_write_addr;
+  logic incr_read_addr, reset_read_addr;
+  enum logic [1:0] {WAIT, GENERATE_RAND, TRANSMIT_RAND} state, nextState;
 
   
 
@@ -292,6 +320,8 @@ module TOP(
     endcase
 
   end
+
+
 
   always_ff @(posedge CLOCK_50) begin
     if(~KEY[3]) begin
