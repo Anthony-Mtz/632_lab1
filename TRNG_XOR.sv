@@ -68,156 +68,156 @@ module TOP_OLD(
   output logic [35:0] GPIO_0
   );
 
-  parameter BITS = 8;
-  parameter TOTAL_COUNT = 1000000;
+  // parameter BITS = 8;
+  // parameter TOTAL_COUNT = 1000000;
 
-  logic [$clog2(TOTAL_COUNT):0] count;
+  // logic [$clog2(TOTAL_COUNT):0] count;
 
-  logic [BITS-1:0] word_OUT;
-  logic [$clog2(BITS):0] pointer;
-  logic enter, send, tx_busy, increment, reset_pointer, generate_random, generate_sequence;
-  logic reset_count, generate_done, increment_count;
+  // logic [BITS-1:0] word_OUT;
+  // logic [$clog2(BITS):0] pointer;
+  // logic enter, send, tx_busy, increment, reset_pointer, generate_random, generate_sequence;
+  // logic reset_count, generate_done, increment_count;
 
-  logic [7:0] din;
+  // logic [7:0] din;
 
-  assign din = (word_OUT[BITS-1-pointer]) ? 8'h31 : 8'h30;
+  // assign din = (word_OUT[BITS-1-pointer]) ? 8'h31 : 8'h30;
 
-  assign LEDR[8:0] = word_OUT;
-  assign LEDR[9] = tx_busy;
+  // assign LEDR[8:0] = word_OUT;
+  // assign LEDR[9] = tx_busy;
  
-  uart transmit(.din, .wr_en(send), .clk_50m(CLOCK_50), .tx(GPIO_0[25]), .tx_busy);
-  TRNG #(.SIZE(BITS)) DUT(.clock(enter), .word_OUT);
+  // uart transmit(.din, .wr_en(send), .clk_50m(CLOCK_50), .tx(GPIO_0[25]), .tx_busy);
+  // TRNG #(.SIZE(BITS)) DUT(.clock(enter), .word_OUT);
 
 
 
 
-  enum logic [1:0] {MAIN_WAIT, SEQ_GEN, WAIT_GEN} main_state, main_nextState;
+  // enum logic [1:0] {MAIN_WAIT, SEQ_GEN, WAIT_GEN} main_state, main_nextState;
 
-  always_comb begin
-    main_nextState = MAIN_WAIT;
-    reset_count = 1'b0;
-    increment_count = 1'b0;
-    generate_random = 1'b0;
+  // always_comb begin
+  //   main_nextState = MAIN_WAIT;
+  //   reset_count = 1'b0;
+  //   increment_count = 1'b0;
+  //   generate_random = 1'b0;
 
-    case(main_state)
+  //   case(main_state)
 
-      MAIN_WAIT: begin
-        main_nextState = (generate_sequence) ? SEQ_GEN : MAIN_WAIT;
-        reset_count = 1'b1;
-      end
+  //     MAIN_WAIT: begin
+  //       main_nextState = (generate_sequence) ? SEQ_GEN : MAIN_WAIT;
+  //       reset_count = 1'b1;
+  //     end
 
-      SEQ_GEN: begin
-        if(count < TOTAL_COUNT) begin
-          main_nextState = WAIT_GEN;
-          generate_random = 1'b1;
-        end
-        else begin
-          main_nextState = MAIN_WAIT;
-          reset_count = 1'b1;
-        end
-      end
+  //     SEQ_GEN: begin
+  //       if(count < TOTAL_COUNT) begin
+  //         main_nextState = WAIT_GEN;
+  //         generate_random = 1'b1;
+  //       end
+  //       else begin
+  //         main_nextState = MAIN_WAIT;
+  //         reset_count = 1'b1;
+  //       end
+  //     end
 
-      WAIT_GEN: begin
-        main_nextState = (generate_done) ? SEQ_GEN : WAIT_GEN;
-        increment_count = generate_done;
-      end
+  //     WAIT_GEN: begin
+  //       main_nextState = (generate_done) ? SEQ_GEN : WAIT_GEN;
+  //       increment_count = generate_done;
+  //     end
 
-    endcase
-
-
-  end
+  //   endcase
 
 
+  // end
 
 
 
 
 
-  enum logic [1:0] {WAIT, TRANSMIT, BUSY} state, nextState;
 
-  always_comb begin
-    nextState = WAIT;
-    enter = 1'b0;
-    send = 1'b0;
-    reset_pointer = 1'b0;
-    increment = 1'b0;
-    generate_done = 1'b0;
+
+  // enum logic [1:0] {WAIT, TRANSMIT, BUSY} state, nextState;
+
+  // always_comb begin
+  //   nextState = WAIT;
+  //   enter = 1'b0;
+  //   send = 1'b0;
+  //   reset_pointer = 1'b0;
+  //   increment = 1'b0;
+  //   generate_done = 1'b0;
     
-    case(state)
+  //   case(state)
       
-      WAIT: begin
-        nextState = (generate_random) ? TRANSMIT : WAIT;
-        enter = generate_random;
-        reset_pointer = 1'b1;
-      end
+  //     WAIT: begin
+  //       nextState = (generate_random) ? TRANSMIT : WAIT;
+  //       enter = generate_random;
+  //       reset_pointer = 1'b1;
+  //     end
 
-      TRANSMIT: begin
-        if(pointer < BITS) begin
-          nextState = BUSY;
-          send = 1'b1;
-        end
-        else begin
-          nextState = WAIT;
-          generate_done = 1'b1;
-          reset_pointer = 1'b1;
-        end
-      end
+  //     TRANSMIT: begin
+  //       if(pointer < BITS) begin
+  //         nextState = BUSY;
+  //         send = 1'b1;
+  //       end
+  //       else begin
+  //         nextState = WAIT;
+  //         generate_done = 1'b1;
+  //         reset_pointer = 1'b1;
+  //       end
+  //     end
 
-      BUSY: begin
-        nextState = (tx_busy) ? BUSY : TRANSMIT;
-        increment = ~tx_busy;
-      end
+  //     BUSY: begin
+  //       nextState = (tx_busy) ? BUSY : TRANSMIT;
+  //       increment = ~tx_busy;
+  //     end
 
-    endcase
+  //   endcase
 
-  end
+  // end
 
 
-  enum logic {PRESSED, RELEASED} state_button, nextState_button;
+  // enum logic {PRESSED, RELEASED} state_button, nextState_button;
 
-  always_comb begin
-    nextState_button = RELEASED;
-    generate_sequence = 1'b0;
+  // always_comb begin
+  //   nextState_button = RELEASED;
+  //   generate_sequence = 1'b0;
     
-    case(state_button)
-      PRESSED: begin
-        nextState_button = (~KEY[0]) ? PRESSED : RELEASED;
-        generate_sequence = 1'b0;
-      end
+  //   case(state_button)
+  //     PRESSED: begin
+  //       nextState_button = (~KEY[0]) ? PRESSED : RELEASED;
+  //       generate_sequence = 1'b0;
+  //     end
 
-      RELEASED: begin
-        nextState_button = (~KEY[0]) ? PRESSED : RELEASED;
-        generate_sequence = ~KEY[0];
-      end
-    endcase
+  //     RELEASED: begin
+  //       nextState_button = (~KEY[0]) ? PRESSED : RELEASED;
+  //       generate_sequence = ~KEY[0];
+  //     end
+  //   endcase
 
-  end
+  // end
 
 
-  always_ff @(posedge CLOCK_50) begin
-    if(~KEY[3]) begin
-      main_state <= MAIN_WAIT;
-      state <= WAIT;
-      state_button <= RELEASED;
-    end
-    else begin
-      main_state <= main_nextState;
-      state <= nextState;
-      state_button <= nextState_button;
-    end
+  // always_ff @(posedge CLOCK_50) begin
+  //   if(~KEY[3]) begin
+  //     main_state <= MAIN_WAIT;
+  //     state <= WAIT;
+  //     state_button <= RELEASED;
+  //   end
+  //   else begin
+  //     main_state <= main_nextState;
+  //     state <= nextState;
+  //     state_button <= nextState_button;
+  //   end
 
-    if(reset_pointer)
-      pointer <= '0;
-    else begin  
-      pointer <= (increment) ? pointer + 1 : pointer;
-    end
+  //   if(reset_pointer)
+  //     pointer <= '0;
+  //   else begin  
+  //     pointer <= (increment) ? pointer + 1 : pointer;
+  //   end
 
-    if(reset_count)
-      count <= '0;
-    else begin
-      count <= (increment_count) ? count + BITS : count;
-    end
-  end
+  //   if(reset_count)
+  //     count <= '0;
+  //   else begin
+  //     count <= (increment_count) ? count + BITS : count;
+  //   end
+  // end
 
 endmodule: TOP_OLD
 
@@ -240,42 +240,47 @@ module MEMORY
 
   always_ff @(posedge clock, negedge reset_n) begin
     if(~reset_n) begin
-      // reset memory
+      for(int i=0; i<MEMORY_SIZE; i++) begin
+        memory[i] = 'd0;
+      end
     end
     else if (write_en) memory[write_addr] <= din;
   end
 
   assign dout = read_en ? memory[read_addr] : 'd0;
 
-
-
 endmodule: MEMORY
 
 
-module TOP(
+module TOP
+  (
   input  logic [3:0] KEY,
   input  logic CLOCK_50,
   output logic [35:0] GPIO_0
-);
+  );
 
-  parameter WORD_WIDTH = 8;
-  parameter COUNT = 1000000;
-  parameter MAX_ADDR = COUNT / WORD_WIDTH;
+  localparam WORD_WIDTH = 64;
+  localparam COUNT = 1000000;
+  localparam MEMORY_SIZE = COUNT / WORD_WIDTH;
 
   logic [$clog2(COUNT):0] count;
   logic [WORD_WIDTH-1:0] word_OUT;
 
   logic write_en, read_en;
   logic [WORD_WIDTH-1:0] mem_out;
-  logic [$clog2(WORD_WIDTH)-1:0] write_addr, read_addr;
+  logic [$clog2(MEMORY_SIZE)-1:0] write_addr, read_addr;
 
   logic sample_clock;
 
-  clock_divider #(.DIVIDE(4)) sampler(.clk_50m(CLOCK_50), .divided_clock(sample_clock));
+  logic reset_n;
+
+  clock_divider #(.DIV_FACT(4)) sampler(.clk(CLOCK_50), .reset_n(reset_n), .en(1'b1),
+                                        .clk_div(sample_clock));
 
   TRNG #(.SIZE(WORD_WIDTH)) DUT(.clock(sample_clock), .word_OUT(word_OUT));
 
-  MEMORY #(.WORD_WIDTH(WORD_WIDTH)) memory(.clock(CLOCK_50), .write_en(write_en), .read_en(read_en),
+  MEMORY #(.MEMORY_SIZE(MEMORY_SIZE),.WORD_WIDTH(WORD_WIDTH)) memory(.clock(CLOCK_50), .reset_n(reset_n),
+                                           .write_en(write_en), .read_en(read_en),
                                            .write_addr(write_addr), .read_addr(read_addr),
                                            .din(word_OUT), .dout(mem_out));
 
@@ -305,7 +310,8 @@ module TOP(
 
   always_comb begin
     nextState_button = RELEASED;
-    generate_sequence = 1'b0;
+    // generate_sequence = 1'b0;
+    generate_and_send = 1'b0;
     
     case(state_button)
       PRESSED: begin
@@ -336,22 +342,48 @@ end
 endmodule: TOP
 
 
+module clock_divider_flop
+  (
+    input  logic en,
+    input  logic clk,
+    input  logic reset_n,
+    output logic div_out
+  );
+
+  always_ff @(posedge clk, negedge reset_n) begin
+    if (~reset_n) begin
+      div_out <= 1'b0;
+    end
+    else if (en) begin
+      div_out <= ~div_out;
+    end
+  end
+
+endmodule: clock_divider_flop
+
+
 module clock_divider
-        #(parameter DIVIDE = 32)
-        (input logic clk_50m,
-		     output logic divided_clock);
+  #(parameter DIV_FACT=4)
+  (
+    input  logic en,
+    input  logic clk,
+    input  logic reset_n,
+    output logic clk_div
+  );
+    
+  localparam DIV = 1+$clog2(DIV_FACT);
 
-parameter CLK_ACC_MAX = 50000000 / DIVIDE;
-parameter CLK_ACC_WIDTH = $clog2(clk_acc_MAX);
-reg [CLK_ACC_WIDTH - 1:0] clk_acc = 0;
 
-assign divided_clock = (clk_acc == 9'd0);
+  logic [DIV-1:0] div_conns;
+  assign div_conns[0] = clk;
+  assign clk_div = div_conns[DIV-1];
 
-always @(posedge clk_50m) begin
-	if (clk_acc == clk_acc_MAX[CLK_ACC_WIDTH - 1:0])
-		clk_acc <= 0;
-	else
-		clk_acc <= clk_acc + 9'b1;
-end
+  genvar i;
+  generate
+    for (i = 1; i < DIV; i++) begin : clock_div
+      clock_divider_flop flop(.en, .clk(div_conns[i-1]), .reset_n, .div_out(div_conns[i]));
+    end
+  endgenerate
 
-endmodule
+    
+endmodule: clock_divider
