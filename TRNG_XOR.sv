@@ -259,11 +259,11 @@ module TOP
   output logic [35:0] GPIO_0
   );
 
-  localparam WORD_WIDTH = 64;
+  localparam WORD_WIDTH = 8;  // @TODO: does this have to be 8?
   localparam COUNT = 1000000;
   localparam MEMORY_SIZE = COUNT / WORD_WIDTH;
 
-  logic [$clog2(COUNT):0] count;
+  logic [$clog2(COUNT):0] write_count, read_count;
   logic [WORD_WIDTH-1:0] word_OUT;
 
   logic write_en, read_en;
@@ -280,37 +280,79 @@ module TOP
   TRNG #(.SIZE(WORD_WIDTH)) DUT(.clock(sample_clock), .word_OUT(word_OUT));
 
   MEMORY #(.MEMORY_SIZE(MEMORY_SIZE),.WORD_WIDTH(WORD_WIDTH)) memory(.clock(CLOCK_50), .reset_n(reset_n),
-                                           .write_en(write_en), .read_en(read_en),
+                                           .write_en(write_en), .read_en(1'b1),
                                            .write_addr(write_addr), .read_addr(read_addr),
                                            .din(word_OUT), .dout(mem_out));
 
-  // logic send, tx_busy;
-  // logic [7:0] din;
+  logic tx_busy;
+  logic [7:0] din;
 
-  // assign din = (word_OUT[BITS-1-pointer]) ? 8'h31 : 8'h30;
+  logic send;
+  logic incr_write_count, reset_write_count;
+  logic incr_read_count, reset_read_count;
 
-  // uart transmit(.din, .wr_en(send), .clk_50m(CLOCK_50), .tx(GPIO_0[25]), .tx_busy);
+  enum logic [2:0] {WAIT, GENERATE_RAND, HOLD, TRANSMIT_RAND, TX_WAIT} state, nextState;
 
+  assign read_addr = read_count/WORD_WIDTH;
+  assign write_addr = write_addr/WORD_WIDTH;
 
+  // assign din = (mem_out[read_addr][WORD_WIDTH-(read_count%WORD_WIDTH)]) ? 8'h31 : 8'h30;
+  assign din = (mem_out[WORD_WIDTH-(read_count%WORD_WIDTH)]) ? 8'h31 : 8'h30;
 
-
-  logic incr_count, reset_count;
-  logic incr_write_addr, reset_write_addr;
-  logic incr_read_addr, reset_read_addr;
-  enum logic [1:0] {WAIT, GENERATE_RAND, TRANSMIT_RAND} state, nextState;
-
-  
-
-
-
-
+  uart transmit(.din, .wr_en(send), .clk_50m(CLOCK_50), .tx(GPIO_0[25]), .tx_busy);
 
   logic generate_and_send;
   enum logic {PRESSED, RELEASED} state_button, nextState_button;
 
+
+    
+  always_comb begin
+    nextState = WAIT;
+    incr_read_count = 1'b0;
+    reset_read_count = 1'b0;
+    incr_write_count = 1'b0;
+    reset_write_count = 1'b0;
+    send = 1'b0;
+
+    case(state)
+      WAIT: begin
+        nextState = (generate_and_send) ? GENERATE_RAND : WAIT;
+        reset_write_count = generate_and_send;
+      end
+      GENERATE_RAND: begin
+        if(write_count < COUNT) begin
+          nextState = (sample_clock) ? HOLD : GENERATE_RAND;
+          incr_write_count = sample_clock;
+          write_en = sample_clock;
+        end
+        else begin
+          nextState = TRANSMIT_RAND;
+          reset_read_count = 1'b1;
+        end
+      end
+      HOLD: begin
+        nextState = (sample_clock) ? HOLD : GENERATE_RAND;
+      end
+      TRANSMIT_RAND: begin
+        if(read_count < COUNT) begin
+          nextState = TX_WAIT;
+          send = 1'b1;
+        end
+        else begin
+          nextState = WAIT;
+        end
+      end
+      TX_WAIT: begin
+        nextState = (tx_busy) ? TX_WAIT : TRANSMIT_RAND;
+        incr_read_count = ~tx_busy;
+      end
+    endcase
+  end
+
+
+
   always_comb begin
     nextState_button = RELEASED;
-    // generate_sequence = 1'b0;
     generate_and_send = 1'b0;
     
     case(state_button)
@@ -330,14 +372,28 @@ module TOP
 
 
   always_ff @(posedge CLOCK_50) begin
+
+    // Reset button
     if(~KEY[3]) begin
       state_button <= RELEASED;
+      state        <= WAIT;
     end
     else begin
-
       state_button <= nextState_button;
+      state        <= nextState;
     end
-end
+
+    // Read and write count flops (controls read and write addrs)
+    if(reset_write_count)
+      write_count <= '0;
+    if(incr_write_count)
+      write_count <= write_count + WORD_WIDTH;
+
+    if(reset_read_count)
+      read_count <= '0;
+    if(incr_read_count)
+      read_count <= read_count + 1'b1;
+  end
 
 endmodule: TOP
 
