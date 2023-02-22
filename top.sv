@@ -1,10 +1,10 @@
 `default_nettype none
 
 module top
-	(input CLOCK_50, 
+	(input CLOCK_50,
 	 input logic [3:0] KEY,
 	 input logic [9:0] SW,
-	 output logic [9:0] LEDR, 
+	 output logic [9:0] LEDR,
 	 output logic [35:0] GPIO_0);
 
 	localparam WORD_WIDTH = 1;  // @TODO: does this have to be 8?
@@ -12,24 +12,25 @@ module top
 	localparam MEMORY_SIZE = COUNT / WORD_WIDTH;
 
 	logic q0, q1, q2, bit_xor, bit_out, clk, bit_clk;
-	fast_oscil#(7) oscil0(.q(q0), .en(SW[0]));
-	fast_oscil#(11) oscil1(.q(q1), .en(SW[0]));
-	fast_oscil#(13) oscil2(.q(q2), .en(SW[0]));
+	fast_oscil #(7) oscil0(.q(q0), .en(SW[0]));
+	fast_oscil #(11) oscil1(.q(q1), .en(SW[0]));
+	fast_oscil #(13) oscil2(.q(q2), .en(SW[0]));
 
-	
+    fast_oscil #(35) oscil_clk (.q(clk), .en(1'd1));
+
 	assign bit_xor = q0 ^ q1 ^ q2;
-	assign clk = CLOCK_50;
+	//assign clk = CLOCK_50;
 	logic tmp, tmp2;
-	
+
 	always_ff@(posedge clk) begin
 		tmp 	  <= KEY[1];
 		tmp2    <= tmp;
 	end
-	
+
 	always_ff@(posedge sample_clock) begin
 		bit_out <= bit_xor;
 	end
-	
+
 	assign LEDR[0] = bit_out;
 	assign LEDR[1] = 1;
 	assign LEDR[2] = SW[0];
@@ -60,7 +61,7 @@ module top
 	logic incr_write_count, reset_write_count;
 	logic incr_read_count, reset_read_count;
 
-	enum logic [2:0] {WAIT = 3'd1, GENERATE_RAND = 3'd2, HOLD = 3'd3, 
+	enum logic [2:0] {WAIT = 3'd1, GENERATE_RAND = 3'd2, HOLD = 3'd3,
 					  TRANSMIT_RAND = 3'd4, TX_WAIT = 3'd5} state, nextState;
 
 	assign LEDR[9:7] = state;
@@ -74,7 +75,7 @@ module top
 
 	logic generate_and_send;
 	enum logic {PRESSED, RELEASED} state_button, nextState_button;
-		
+
 	always_comb begin
 		nextState = WAIT;
 		incr_read_count = 1'b0;
@@ -122,7 +123,7 @@ module top
     always_comb begin
 		nextState_button = RELEASED;
 		generate_and_send = 1'b0;
-		
+
 		case(state_button)
 		PRESSED: begin
 			nextState_button = (~KEY[0]) ? PRESSED : RELEASED;
@@ -190,7 +191,7 @@ module clock_divider
     input  logic reset_n,
     output logic clk_div
   );
-    
+
   localparam DIV = 1+$clog2(DIV_FACT);
 
 
@@ -204,13 +205,13 @@ module clock_divider
       clock_divider_flop flop(.en, .clk(div_conns[i-1]), .reset_n, .div_out(div_conns[i]));
     end
   endgenerate
-  
+
 endmodule: clock_divider
 
 module MEMORY
   #(parameter MEMORY_SIZE = 4096,
-    parameter WORD_WIDTH = 32) 
-  ( 
+    parameter WORD_WIDTH = 32)
+  (
     input  logic clock, reset_n,
     input  logic write_en,
     input  logic read_en,
