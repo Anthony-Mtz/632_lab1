@@ -6,8 +6,8 @@ module baud_rate_gen(input wire clk_50m,
 		     output wire rxclk_en,
 		     output wire txclk_en);
 
-parameter RX_ACC_MAX = 50000000 / (115200 * 16);
-parameter TX_ACC_MAX = 50000000 / 115200;
+parameter RX_ACC_MAX = 50000000 / (115200* 16);
+parameter TX_ACC_MAX = 50000000 / 256000;
 parameter RX_ACC_WIDTH = $clog2(RX_ACC_MAX);
 parameter TX_ACC_WIDTH = $clog2(TX_ACC_MAX);
 reg [RX_ACC_WIDTH - 1:0] rx_acc = 0;

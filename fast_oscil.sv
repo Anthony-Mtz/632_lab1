@@ -1,17 +1,18 @@
 
 
 module fast_oscil #(parameter NUM_OSCIL = 5)
-	(input logic clk, en, 
+	(input logic en, 
 	 output logic q);
 
 	genvar i;
 	logic [NUM_OSCIL-1:0] tmp_arr /*synthesis keep */;
 	logic q_tmp;
-	assign tmp_arr[0] = ~(tmp_arr[i-1] & en) /* synthesis keep */;
-	always_ff @(posedge clk) begin
-		q_tmp <= tmp_arr[NUM_OSCIL-1];
-		q <= q_tmp;
-	end
+	assign tmp_arr[0] = ~(tmp_arr[NUM_OSCIL-1] & en) /* synthesis keep */;
+	assign q = tmp_arr[NUM_OSCIL-1];
+//	always_ff @(posedge clk) begin
+//		q_tmp <= tmp_arr[NUM_OSCIL-1];
+//		q <= q_tmp;
+//	end
 	
 
 	logic in;

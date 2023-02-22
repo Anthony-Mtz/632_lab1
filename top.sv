@@ -12,10 +12,10 @@ module top
 	localparam MEMORY_SIZE = COUNT / WORD_WIDTH;
 
 	logic q0, q1, q2, bit_xor, bit_out, clk, bit_clk;
-	fast_oscil#(97) oscil0(.clk, .q(q0), .en(SW[0]));
-	fast_oscil#(79) oscil1(.clk, .q(q1), .en(SW[0]));
-	fast_oscil#(277) oscil2(.clk, .q(q2), .en(SW[0]));
-	
+	fast_oscil#(7) oscil0(.q(q0), .en(SW[0]));
+	fast_oscil#(11) oscil1(.q(q1), .en(SW[0]));
+	fast_oscil#(13) oscil2(.q(q2), .en(SW[0]));
+
 	
 	assign bit_xor = q0 ^ q1 ^ q2;
 	assign clk = CLOCK_50;
