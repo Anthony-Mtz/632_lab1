@@ -16,8 +16,7 @@ def create_image(data_file, outpath):
     # data_name = 'output_ring_1'
     # data_file = os.path.join('results/', data_name+'.txt')
 
-    #results/output_ring_1.txt
-    data_name = data_file.split('/')[1].split('.')[0]
+    data_name = data_file.split('/')[-1].split('.')[0]
 
     with open(data_file, 'r') as f:
         for i in range(len(array)):
@@ -47,8 +46,8 @@ def create_image(data_file, outpath):
 
 
 # Paths
-TRNG_data_path = 'TRNG_data'
-outpath = 'TRNG_data/pictures'
+TRNG_data_path = 'TRNG_data/Old'
+outpath = 'TRNG_data/Old/pictures'
 
 # Generate all images
 for file_name in os.listdir(TRNG_data_path):
