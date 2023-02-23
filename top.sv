@@ -12,19 +12,19 @@ module top
 	localparam MEMORY_SIZE = COUNT / WORD_WIDTH;
 
 	logic q0, q1, q2, bit_xor, bit_out, clk, bit_clk;
-	fast_oscil#(7) oscil0(.q(q0), .en(SW[0]));
-	fast_oscil#(11) oscil1(.q(q1), .en(SW[0]));
-	fast_oscil#(13) oscil2(.q(q2), .en(SW[0]));
+	fast_oscil#(67) oscil0(.clk(CLOCK_50), .q(q0), .en(SW[0]));
+	fast_oscil#(71) oscil1(.clk(CLOCK_50),.q(q1), .en(SW[0]));
+	fast_oscil#(73) oscil2(.clk(CLOCK_50),.q(q2), .en(SW[0]));
 
 	
 	assign bit_xor = q0 ^ q1 ^ q2;
 	assign clk = CLOCK_50;
 	logic tmp, tmp2;
 	
-	always_ff@(posedge clk) begin
-		tmp 	  <= KEY[1];
-		tmp2    <= tmp;
-	end
+//	always_ff@(posedge clk) begin
+//		tmp 	  <= KEY[1];
+//		tmp2    <= tmp;
+//	end
 	
 	always_ff@(posedge sample_clock) begin
 		bit_out <= bit_xor;
@@ -44,7 +44,7 @@ module top
 
 	logic reset_n;
 
-	clock_divider #(.DIV_FACT(4)) sampler(.clk(CLOCK_50), .reset_n(1'b1), .en(1'b1),
+	clock_divider #(.DIV_FACT(16)) sampler(.clk(CLOCK_50), .reset_n(1'b1), .en(1'b1),
 											.clk_div(sample_clock));
 
 
