@@ -1,0 +1,44 @@
+------------------------------------------------------------------------------
+RESULTS FOR THE UNIFORMITY OF P-VALUES AND THE PROPORTION OF PASSING SEQUENCES
+------------------------------------------------------------------------------
+   generator is <../../../Results/config_C_2.txt>
+------------------------------------------------------------------------------
+ C1  C2  C3  C4  C5  C6  C7  C8  C9 C10  P-VALUE  PROPORTION  STATISTICAL TEST
+------------------------------------------------------------------------------
+  0   1   1   1   1   2   1   1   0   2  0.552798 *   10/10      Rank
+  6   2   1   0   1   0   0   0   0   0  0.108584 *    8/10      FFT
+  2   1   1   2   2   1   1   0   0   0  0.327031 *    9/10      LinearComplexity
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+The minimum pass rate for each statistical test with the exception of the
+random excursion (variant) test is approximately = 8 for a
+sample size = 10 binary sequences.
+
+The minimum pass rate for the random excursion (variant) test is undefined.
+
+For further guidelines construct a probability table using the MAPLE program
+provided in the addendum section of the documentation.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+FAILED: Frequency
+FAILED: BlockFrequency
+FAILED: CumulativeSums
+FAILED: Runs
+FAILED: LongestRun
+FAILED: NonOverlappingTemplate
+FAILED: OverlappingTemplate
+FAILED: Universal
+FAILED: ApproximateEntropy
+FAILED: RandomExcursions
+FAILED: RandomExcursionsVariant
+FAILED: Serial
+---------------------------------------------------------------------------
+
+
+
+
+Final average P-Values For Finished Tests
+
+0.552798 - 10/10 - Rank
+0.108584 - 8/10 - FFT
+0.327031 - 9/10 - LinearComplexity

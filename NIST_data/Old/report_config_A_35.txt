@@ -1,0 +1,46 @@
+------------------------------------------------------------------------------
+RESULTS FOR THE UNIFORMITY OF P-VALUES AND THE PROPORTION OF PASSING SEQUENCES
+------------------------------------------------------------------------------
+   generator is <../../../Results/config_A_35.txt>
+------------------------------------------------------------------------------
+ C1  C2  C3  C4  C5  C6  C7  C8  C9 C10  P-VALUE  PROPORTION  STATISTICAL TEST
+------------------------------------------------------------------------------
+  9   0   0   0   0   0   0   0   0   1  0.093096 *    1/10   *  BlockFrequency
+  8   2   0   0   0   0   0   0   0   0  0.027882 *    3/10   *  Rank
+  9   1   0   0   0   0   0   0   0   0  0.019203 *    1/10   *  FFT
+  9   0   0   0   1   0   0   0   0   0  0.065986 *    5/10   *  OverlappingTemplate
+  2   1   0   2   0   0   1   2   1   1  0.494579 *    9/10      LinearComplexity
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+The minimum pass rate for each statistical test with the exception of the
+random excursion (variant) test is approximately = 8 for a
+sample size = 10 binary sequences.
+
+The minimum pass rate for the random excursion (variant) test is undefined.
+
+For further guidelines construct a probability table using the MAPLE program
+provided in the addendum section of the documentation.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+FAILED: Frequency
+FAILED: CumulativeSums
+FAILED: Runs
+FAILED: LongestRun
+FAILED: NonOverlappingTemplate
+FAILED: Universal
+FAILED: ApproximateEntropy
+FAILED: RandomExcursions
+FAILED: RandomExcursionsVariant
+FAILED: Serial
+---------------------------------------------------------------------------
+
+
+
+
+Final average P-Values For Finished Tests
+
+0.093096 - 1/10 - BlockFrequency
+0.027882 - 3/10 - Rank
+0.019203 - 1/10 - FFT
+0.065986 - 5/10 - OverlappingTemplate
+0.494579 - 9/10 - LinearComplexity

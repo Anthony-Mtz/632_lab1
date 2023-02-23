@@ -1,0 +1,223 @@
+------------------------------------------------------------------------------
+RESULTS FOR THE UNIFORMITY OF P-VALUES AND THE PROPORTION OF PASSING SEQUENCES
+------------------------------------------------------------------------------
+   generator is <../../../Results/config_E_16.txt>
+------------------------------------------------------------------------------
+ C1  C2  C3  C4  C5  C6  C7  C8  C9 C10  P-VALUE  PROPORTION  STATISTICAL TEST
+------------------------------------------------------------------------------
+  0   0   1   2   0   0   3   2   1   1  0.620089 *   10/10      Frequency
+  0   0   0   0   0   0   0   0   0  10  1.000000 *   10/10      BlockFrequency
+  0   0   0   2   0   1   0   1   1   5  0.777777 *   10/10      CumulativeSums
+  0   0   1   0   1   1   1   0   1   5  0.743631 *   10/10      CumulativeSums
+  0   0   2   2   1   1   1   2   0   1  0.531036 *   10/10      Rank
+ 10   0   0   0   0   0   0   0   0   0  0.000113 *    0/10   *  FFT
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  0   0   0   0  10   0   0   0   0   0  0.434505 *   10/10      NonOverlappingTemplate
+  1   1   1   0   0   0   0   0   0   0  0.151656 *    3/3       RandomExcursions
+  1   1   1   0   0   0   0   0   0   0  0.132873 *    2/3       RandomExcursions
+  3   0   0   0   0   0   0   0   0   0  0.016427 *    2/3       RandomExcursions
+  0   3   0   0   0   0   0   0   0   0  0.130311 *    3/3       RandomExcursions
+  2   0   0   1   0   0   0   0   0   0  0.136700 *    2/3       RandomExcursions
+  2   0   0   1   0   0   0   0   0   0  0.103296 *    1/3    *  RandomExcursions
+  2   0   1   0   0   0   0   0   0   0  0.095910 *    2/3       RandomExcursions
+  2   0   1   0   0   0   0   0   0   0  0.125185 *    3/3       RandomExcursions
+  1   0   0   0   0   0   1   1   0   0  0.468790 *    3/3       RandomExcursionsVariant
+  1   0   0   0   0   1   0   0   0   1  0.507726 *    3/3       RandomExcursionsVariant
+  1   0   0   0   0   1   0   0   0   1  0.527412 *    3/3       RandomExcursionsVariant
+  1   0   0   0   0   0   1   1   0   0  0.464396 *    3/3       RandomExcursionsVariant
+  1   0   0   1   0   0   0   1   0   0  0.373263 *    2/3       RandomExcursionsVariant
+  1   1   0   0   0   0   1   0   0   0  0.274731 *    3/3       RandomExcursionsVariant
+  2   0   0   0   0   1   0   0   0   0  0.222655 *    2/3       RandomExcursionsVariant
+  1   1   0   0   0   0   0   1   0   0  0.303667 *    2/3       RandomExcursionsVariant
+  1   0   0   0   1   0   0   0   1   0  0.459777 *    3/3       RandomExcursionsVariant
+  0   0   0   0   0   0   1   0   1   1  0.802254 *    3/3       RandomExcursionsVariant
+  0   0   1   0   0   0   0   0   1   1  0.675353 *    3/3       RandomExcursionsVariant
+  0   0   1   0   0   0   0   1   1   0  0.606953 *    3/3       RandomExcursionsVariant
+  0   0   0   1   0   1   0   0   1   0  0.571427 *    3/3       RandomExcursionsVariant
+  0   0   1   2   0   0   0   0   0   0  0.311090 *    3/3       RandomExcursionsVariant
+  0   1   2   0   0   0   0   0   0   0  0.240818 *    3/3       RandomExcursionsVariant
+  0   2   0   1   0   0   0   0   0   0  0.228329 *    3/3       RandomExcursionsVariant
+  0   1   1   1   0   0   0   0   0   0  0.252927 *    3/3       RandomExcursionsVariant
+  1   0   1   1   0   0   0   0   0   0  0.244288 *    3/3       RandomExcursionsVariant
+  0   3   3   1   1   0   0   0   2   0  0.367046 *   10/10      LinearComplexity
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+The minimum pass rate for each statistical test with the exception of the
+random excursion (variant) test is approximately = 8 for a
+sample size = 10 binary sequences.
+
+The minimum pass rate for the random excursion (variant) test
+is approximately = 2 for a sample size = 3 binary sequences.
+
+For further guidelines construct a probability table using the MAPLE program
+provided in the addendum section of the documentation.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+FAILED: Runs
+FAILED: LongestRun
+FAILED: OverlappingTemplate
+FAILED: Universal
+FAILED: ApproximateEntropy
+FAILED: Serial
+---------------------------------------------------------------------------
+
+
+
+
+Final average P-Values For Finished Tests
+
+0.620089 - 10/10 - Frequency
+1.000000 - 10/10 - BlockFrequency
+0.760704 - 20/20 - CumulativeSums
+0.531036 - 10/10 - Rank
+0.000113 - 0/10 - FFT
+0.434505 - 1480/1480 - NonOverlappingTemplate
+0.111545 - 18/24 - RandomExcursions
+0.418659 - 51/54 - RandomExcursionsVariant
+0.367046 - 10/10 - LinearComplexity
