@@ -3,8 +3,6 @@
 ## Contributors
 >@RiceNinja97, @Anthony-Mtz, @njayawar, @maehoad
 
----
-
 ## Repo Structure
 1. RTL for the TRNG can be found in `rtl/`
 2. Bit streams of each configuration can be found in `TRNG_data/`
