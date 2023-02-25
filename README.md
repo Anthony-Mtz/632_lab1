@@ -1,5 +1,14 @@
-# 632_lab1
+# 18-632 Lab 1: TRNG 
 
- Test Results: <br>
- output_ring_1.txt: Ring oscillator (Sampling at (50/4)Mhz, Rings:[97, 79, 277]) - 1M Bits <br>
- output_ring_2.txt: Ring oscillator (Sampling at (50/4)Mhz, Rings:[97, 79, 277]) - 10M Bits
+## Contributors
+>@RiceNinja97, @Anthony-Mtz, @njayawar, @maehoad
+
+---
+
+## Repo Structure
+1. RTL for the TRNG can be found in `rtl/`
+2. Bit streams of each configuration can be found in `TRNG_data/`
+   - Visualization can be found in `TRNG_data/pictures/`
+3. NIST reports can be found in `NIST_data/`
+4. NIST test infrastructure can be found in `sts-2_1_2/`
+5. Scripts for parsing data and generating visualizations can be found in `scripts/`
