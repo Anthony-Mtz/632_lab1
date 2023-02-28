@@ -1,3 +1,7 @@
+/* UART transmission source based on: https://github.com/jamieiles/uart
+ * Covered under General Public License Version 2.0
+ */
+
 module transmitter(input wire [7:0] din,
 		   input wire wr_en,
 		   input wire clk_50m,
