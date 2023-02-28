@@ -1,3 +1,7 @@
+/* UART transmission source based on: https://github.com/jamieiles/uart
+ * Covered under General Public License Version 2.0
+ */
+
 /*disable_sem2009*
  * Hacky baud rate generator to divide a 50MHz clock into a 115200 baud
  * rx/tx pair where the rx clcken oversamples by 16x.
