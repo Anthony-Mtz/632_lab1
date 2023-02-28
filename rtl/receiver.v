@@ -1,3 +1,7 @@
+/* UART transmission source based on: https://github.com/jamieiles/uart
+ * Covered under General Public License Version 2.0
+ */
+
 module receiver(input wire rx,
 		output reg rdy,
 		input wire rdy_clr,
